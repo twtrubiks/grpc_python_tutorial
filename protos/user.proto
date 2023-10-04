@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package user;
+
+// 數字 1 2 只是代表字段的標誌
+message UserRequest {
+    int32 id = 1;
+    string name = 2;
+}
+
+message Detail {
+    int32 id = 1;
+    string value = 2;
+}
+
+message UserResponse {
+    repeated Detail details = 1;
+}
+
+service Users {
+    rpc ListUser (UserRequest) returns (UserResponse);
+}
+
