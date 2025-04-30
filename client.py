@@ -11,8 +11,7 @@ def run():
         # user_request = user_pb2.UserRequest(id=0, name="twtrubiks")
 
         response = stub.ListUser(user_request)
-        print(response)
-
+        print(f"client received: {response}")
 
 if __name__ == '__main__':
     run()

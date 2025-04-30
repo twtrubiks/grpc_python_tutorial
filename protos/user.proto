@@ -3,6 +3,8 @@ syntax = "proto3";
 package user;
 
 // 數字 1 2 只是代表字段的標誌
+// 在 Protobuf 的二進位編碼格式中用來唯一識別每個欄位的標識符
+
 message UserRequest {
     int32 id = 1;
     string name = 2;
@@ -18,6 +20,6 @@ message UserResponse {
 }
 
 service Users {
-    rpc ListUser (UserRequest) returns (UserResponse);
+    rpc ListUser(UserRequest) returns (UserResponse) {}
 }
 

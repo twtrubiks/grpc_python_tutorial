@@ -14,24 +14,21 @@ class UsersServicer(user_pb2_grpc.UsersServicer):
             {
                 "id": request.id,
                 "value" : request.name
-            },
-            {
-                "id": request.id,
-                "value" : request.name
-            },
+            }
         ]
         return user_pb2.UserResponse(details=details)
 
 def serve():
     interceptors = [ExceptionToStatusInterceptor()]
+    port = 50051
     server = grpc.server(
         concurrent.futures.ThreadPoolExecutor(max_workers=10),
         # interceptors=interceptors
         )
-    user_pb2_grpc.add_UsersServicer_to_server(
-        UsersServicer(), server)
-    server.add_insecure_port('[::]:50051')
+    user_pb2_grpc.add_UsersServicer_to_server(UsersServicer(), server)
+    server.add_insecure_port(f'[::]:{port}')
     server.start()
+    print(f"Server started, listening on {port}")
     server.wait_for_termination()
 
 if __name__ == '__main__':
