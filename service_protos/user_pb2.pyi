@@ -6,7 +6,7 @@ from typing import ClassVar as _ClassVar, Iterable as _Iterable, Mapping as _Map
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class UserRequest(_message.Message):
-    __slots__ = ["id", "name"]
+    __slots__ = ("id", "name")
     ID_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     id: int
@@ -14,7 +14,7 @@ class UserRequest(_message.Message):
     def __init__(self, id: _Optional[int] = ..., name: _Optional[str] = ...) -> None: ...
 
 class Detail(_message.Message):
-    __slots__ = ["id", "value"]
+    __slots__ = ("id", "value")
     ID_FIELD_NUMBER: _ClassVar[int]
     VALUE_FIELD_NUMBER: _ClassVar[int]
     id: int
@@ -22,7 +22,7 @@ class Detail(_message.Message):
     def __init__(self, id: _Optional[int] = ..., value: _Optional[str] = ...) -> None: ...
 
 class UserResponse(_message.Message):
-    __slots__ = ["details"]
+    __slots__ = ("details",)
     DETAILS_FIELD_NUMBER: _ClassVar[int]
     details: _containers.RepeatedCompositeFieldContainer[Detail]
     def __init__(self, details: _Optional[_Iterable[_Union[Detail, _Mapping]]] = ...) -> None: ...
